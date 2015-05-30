@@ -1,9 +1,9 @@
 # ansibleplaybook-rancher
-Ansible playbook to keep a Rancher container running on a docker host
+Ansible playbook to keep a [Rancher](http://rancher.com/) container running on a docker host
 
-merely following the instructions at the link below, and ensuring the rancher/server container is started properly: 
+ I am merely following the instructions at this [link] (https://github.com/rancherio/rancher)
+, and ensuring the rancher/server container is started properly
 
-https://github.com/rancherio/rancher
 
 ## usage
 
@@ -27,3 +27,4 @@ where `$URL` is a big long url that points at your rancher server, modify ranche
 ```
 ansible-playbook rancherosAgent.yml
 ```
+stick a line in cron that runs it every five minutes and you’ll ensure their up and running
