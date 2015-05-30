@@ -1,11 +1,11 @@
-# rancheros-playbook
+# ansibleplaybook-rancher
 Ansible playbook to keep a Rancher container running on a docker host
 
 merely following the instructions at the link below, and ensuring the rancher/server container is started properly: 
 
 https://github.com/rancherio/rancher
 
-# usage
+## usage
 
 add these lines to `/etc/ansible/hosts` or wherever you keep your inventory similar to:
 ```
