@@ -1,6 +1,6 @@
 ---
-- name: RancherOS
-  hosts: rancheros
+- name: RancherServer
+  hosts: rancherserver
   sudo: True
   tasks:
   - name: Install docker-py

@@ -1,0 +1,18 @@
+---
+- name: RancherAgent
+  hosts: rancheragent
+  sudo: True
+  tasks:
+  - name: Install docker-py
+    pip: name=docker-py version=1.1.0
+  - name: RancherOS rancher/agent
+    docker:
+      name: rancheragent
+      image: rancher/agent:v0.7.8
+      privileged: True
+      state: reloaded
+      restart_policy: always
+      volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      command: "URL"
+
