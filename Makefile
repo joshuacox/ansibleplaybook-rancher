@@ -11,18 +11,12 @@ help:
 server:
 	ansible-playbook rancherosServer.yml
 
-agent: url playbook.yml play
-
-playbook.yml:
-	@cat rancherosAgent.yml |sed "s#REPLACE_ME_URL#`cat url`#"> playbook.yml
+agent: url agentplay
 
 url:
 	@while [ -z "$$url" ]; do \
 		read -r -p "Enter the url you wish to associate with this Rancher agent [url]: " url; echo "$$url">>url; cat url; \
 	done ;
 
-play:
-	ansible-playbook playbook.yml
-
-rm-playbook:
-	rm playbook.yml
+agentplay:
+	ansible-playbook rancherosAgent.yml

@@ -1,6 +1,8 @@
 ---
 - name: RancherAgent
   hosts: rancheragent
+  vars:
+     url_contents: "{{ lookup('file', 'url') }}"
   sudo: True
   tasks:
   - name: Install docker-py
@@ -14,5 +16,5 @@
       restart_policy: always
       volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      command: "REPLACE_ME_URL"
+      command: "{{ url_contents }}"
 
