@@ -1,0 +1,7 @@
+---
+- name: bootstrap Ansible on debian/ubuntu
+  gather_facts: False
+  hosts: rancheros
+  tasks:
+  - raw: sudo apt-get update
+  - raw: sudo apt-get install -y python python-pip

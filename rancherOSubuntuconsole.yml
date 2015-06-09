@@ -1,0 +1,9 @@
+---
+- name: RancherOS enable console
+  hosts: rancheros
+  sudo: True
+  tasks:
+  - name: ubuntu-console
+    raw: sudo ros service enable ubuntu-console;
+  - name: reboot
+    raw: sudo reboot

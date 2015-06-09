@@ -1,0 +1,31 @@
+---
+- name: RancherAgent
+  hosts: rancheragent
+  vars:
+     url_contents: "{{ lookup('file', 'url') }}"
+     ip_contents: "{{ lookup('file', 'ip') }}"
+     labels_contents: "{{ lookup('file', 'labels') }}"
+  sudo: True
+  tasks:
+  - name: update_cache
+    apt: update_cache=yes cache_valid_time=3600
+  - name: Install python
+    apt: name=python state=present
+  - name: Install python-pip
+    apt: name=python-pip state=present
+  - name: Install docker-py
+    pip: name=docker-py version=1.1.0
+  - name: RancherOS rancher/agent
+    docker:
+      name: rancheragent
+      image: rancher/agent:v0.7.9
+      privileged: True
+      state: reloaded
+      restart_policy: always
+      volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      command: "{{ url_contents }}"
+      env:
+        CATTLE_AGENT_IP: "{{ ip_contents }}"
+        CATTLE_HOST_LABELS: "{{ labels_contents }}"
+
