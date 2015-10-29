@@ -2,8 +2,7 @@
 - name: RancherOS enable console
   hosts: rancheros
   sudo: True
+  gather_facts: False
   tasks:
   - name: ubuntu-console
-    raw: sudo ros service enable ubuntu-console;
-  - name: reboot
-    raw: sudo reboot
+    script: console.bash  creates=/home/rancher/consoled.txt

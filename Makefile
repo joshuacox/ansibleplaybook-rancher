@@ -7,7 +7,12 @@ help:
 	@echo ""   2. configure Auth then go to the add custom host page you will find the URL for your rancher Agents [http://rancherurl/static/infrastructure/hosts/add/custom]
 	@echo ""   3. make agent       - run rancher agents you will be prompted for the above url (it will be cached locally, but due to gitignore it will be pretty hard for you to commit it)
 
-server:
+server: haveged serverplay
+
+haveged:
+	ansible-playbook haveged.yml
+
+serverplay:
 	ansible-playbook rancherServer.yml
 
 agent: url ip labels agentplay
@@ -34,4 +39,4 @@ agentplay:
 	ansible-playbook rancherAgent.yml
 
 console:
-	ansible-playbook rancherOSubuntuconsole.yml
+	ansible-playbook -vvvvv rancherOSubuntuconsole.yml

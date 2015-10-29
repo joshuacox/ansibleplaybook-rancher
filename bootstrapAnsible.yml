@@ -3,5 +3,4 @@
   gather_facts: False
   hosts: rancheros
   tasks:
-  - raw: sudo apt-get update
-  - raw: sudo apt-get install -y python python-pip
+  - script: bootstrapansible.sh  creates=/home/rancher/consoled.txt
