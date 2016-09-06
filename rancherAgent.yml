@@ -5,6 +5,7 @@
      url_contents: "{{ lookup('file', 'url') }}"
      ip_contents: "{{ lookup('file', 'ip') }}"
      labels_contents: "{{ lookup('file', 'labels') }}"
+     datadir_contents: "{{ lookup('file', 'datadir') }}"
   sudo: True
   tasks:
   - name: update_cache
@@ -18,12 +19,13 @@
   - name: RancherOS rancher/agent
     docker:
       name: rancheragent
-      image: rancher/agent:v0.7.9
+      image: rancher/agent
       privileged: True
       state: reloaded
       restart_policy: always
       volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - "/var/run/docker.sock:/var/run/docker.sock",
+      - "{{ datadir_contents }}:/var/lib/rancher"
       command: "{{ url_contents }}"
       env:
         CATTLE_AGENT_IP: "{{ ip_contents }}"

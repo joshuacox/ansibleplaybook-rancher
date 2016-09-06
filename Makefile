@@ -15,7 +15,7 @@ haveged:
 serverplay:
 	ansible-playbook rancherServer.yml
 
-agent: url ip labels agentplay
+agent: url ip labels datadir agentplay
 
 bootstrap:
 	ansible-playbook bootstrapAnsible.yml
@@ -30,6 +30,11 @@ ip:
 		read -r -p "Enter the ip of the Rancher server you wish to associate with these Rancher agents this can be left blank [ip]: " ip; echo "$$ip">>ip; cat ip; \
 	done ;
 
+datadir:
+	@while [ -z "$$datadir" ]; do \
+		read -r -p "Enter the datadir of the Rancher server you wish to associate with these Rancher agents [datadir]: " datadir; echo "$$datadir">>datadir; cat datadir; \
+	done ;
+
 labels:
 	@while [ -z "$$labels" ]; do \
 		read -r -p "Enter the cattle host labels of the Rancher server you wish to associate with these Rancher agents this can be left blank [genus=rancher&phasse=test]: " labels; echo "$$labels">>labels; cat labels; \
@@ -40,3 +45,6 @@ agentplay:
 
 console:
 	ansible-playbook -vvvvv rancherOSubuntuconsole.yml
+
+example:
+	-@echo '/var/lib/rancher'>datadir
