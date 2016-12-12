@@ -2,3 +2,4 @@ url
 ip
 labels
 datadir
+*.retry

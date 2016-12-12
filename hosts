@@ -1,0 +1,8 @@
+[rancherserver]
+rancherserver ansible_ssh_port=$PORT ansible_ssh_host=$IP_ADDRESS ansible_ssh_user=rancher
+
+[rancheragent]
+rancheragent ansible_ssh_port=$PORT ansible_ssh_host=$IP_ADDRESS ansible_ssh_user=rancher
+
+[rancheros]
+rancheros ansible_ssh_port=$PORT ansible_ssh_host=$IP_ADDRESS ansible_ssh_user=rancher

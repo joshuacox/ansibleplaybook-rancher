@@ -24,7 +24,7 @@
       state: reloaded
       restart_policy: always
       volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock",
+      - "/var/run/docker.sock:/var/run/docker.sock"
       - "{{ datadir_contents }}:/var/lib/rancher"
       command: "{{ url_contents }}"
       env:

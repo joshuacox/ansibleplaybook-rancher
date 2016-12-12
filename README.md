@@ -2,10 +2,50 @@
 Ansible playbook to keep a [Rancher](http://rancher.com/) container running on a docker host
 
  I am merely following the instructions at this [link] (https://github.com/rancherio/rancher)
-, and ensuring the rancher/server container is started properly
+, and ensuring the rancher/server container is started properly you can then use ansible to maintain 
+containers, ansible docs [here](http://docs.ansible.com/ansible/docker_module.html)
 
+## Quick Start from installing RancherOS
 
-## usage
+Append the example hosts to your ansible hosts file
+
+```
+cat hosts>>/etc/ansible/hosts
+```
+
+Now replace $IPADDRESS and $PORT in that file as necessary
+
+now enable the ubuntu-console, if you did not do so in cloud-config
+
+```
+make console
+```
+
+then bootstrap python for ansible to function:
+
+```
+make bootstrap
+```
+
+Note: this may hang, `ctrl-C` if it does, and test:
+
+```
+make ping
+```
+
+Then you can 
+
+```
+make server
+```
+
+and
+
+```
+make agent
+```
+
+## detailed usage
 
 add these lines to `/etc/ansible/hosts` or wherever you keep your inventory similar to:
 For the host that runs the rancher server

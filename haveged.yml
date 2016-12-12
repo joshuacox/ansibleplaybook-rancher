@@ -4,7 +4,7 @@
   sudo: True
   tasks:
   - name: Install docker-py
-    pip: name=docker-py version=1.1.0
+    pip: name=docker-py
   - name: Entropy maker HAVEGED
     docker:
       name: havegedocker

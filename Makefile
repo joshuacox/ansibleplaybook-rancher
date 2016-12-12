@@ -48,3 +48,6 @@ console:
 
 example:
 	-@echo '/var/lib/rancher'>datadir
+
+ping:
+	ansible rancheros -m ping
