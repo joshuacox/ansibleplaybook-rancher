@@ -13,7 +13,11 @@ Append the example hosts to your ansible hosts file
 cat hosts>>/etc/ansible/hosts
 ```
 
-Now replace $IPADDRESS and $PORT in that file as necessary
+Now replace $IP_ADDRESS and $PORT in that file as necessary, like
+
+```
+cat hosts | sed 's/$IP_ADDRESS/127.0.0.1/g'  | sed 's/$PORT/22/g' >>/etc/ansible/hosts
+```
 
 now enable the ubuntu-console, if you did not do so in cloud-config
 
